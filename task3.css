@@ -1,0 +1,39 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#codeEditor {
+    height: 70vh;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+}
+
+/* Optional: Customize CodeMirror styles */
+.CodeMirror {
+    height: 100%;
+}
+
+/* Optional: Add styling for line numbers */
+.CodeMirror-gutter {
+    background-color: #f7f7f7;
+    border-right: 1px solid #ddd;
+}
+
+/* Optional: Customize the appearance of the code editor */
+.CodeMirror-scroll {
+    overflow: scroll !important;
+}
+
+/* Optional: Add styling for CodeMirror theme */
+.cm-s-default {
+    background-color: #f7f7f7;
+    color: #333;
+}
+

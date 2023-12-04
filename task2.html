@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Tracker</title>
+    <!-- Include your CSS files for styling -->
+    <link rel="stylesheet" href="task2.css">
+</head>
+<body>
+
+<h1>Project Issue Tracker</h1>
+
+<!-- Issue Form -->
+<form id="issueForm">
+    <label for="title">Issue Title:</label>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="description">Issue Description:</label>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+
+    <label for="priority">Priority:</label>
+    <select id="priority" name="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select><br>
+
+    <label for="assignee">Assignee:</label>
+    <input type="text" id="assignee" name="assignee"><br>
+
+    <label for="attachment">Attach File:</label>
+    <label for="attachment">Attach File:</label>
+    <input type="file" id="attachment" name="attachment"><br>
+
+    <button type="button" onclick="createIssue()">Create Issue</button>
+</form>
+
+<!-- Display Issues -->
+<div id="issueList">
+    <!-- Issues will be displayed here -->
+</div>
+
+<script>
+    // Fetch and display issues when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+        fetchAndDisplayIssues();
+    });
+
+    function createIssue() {
+        // Retrieve form data
+        var title = document.getElementById("title").value;
+        var description = document.getElementById("description").value;
+        var priority = document.getElementById("priority").value;
+        var assignee = document.getElementById("assignee").value;
+        var attachment = document.getElementById("attachment").files[0];
+
+        // Create FormData to handle file upload
+        var formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('priority', priority);
+        formData.append('assignee', assignee);
+        formData.append('attachment', attachment);
+                // Send issue data to the server (you'll need to implement this part using AJAX or fetch)
+        // Example using fetch:
+        fetch('/create_issue', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            // Refresh the issue list after creating a new issue
+            fetchAndDisplayIssues();
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function fetchAndDisplayIssues() {
+        // Fetch issues from the server (you'll need to implement this part using AJAX or fetch)
+        // Example using fetch:
+        fetch('/get_issues')
+        .then(response => response.json())
+        .then(data => {
+            // Display issues in the #issueList element
+            var issueList = document.getElementById("issueList");
+            issueList.innerHTML = '';
+            data.issues.forEach(issue => {
+                var issueElement = document.createElement("div");
+                issueElement.innerHTML = `<strong>${issue.title}</strong><br>${issue.description}<br>Priority: ${issue.priority}<br>Assignee: ${issue.assignee}`;
+                issueList.appendChild(issueElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,33 @@
+Creating a real-time collaborative code editor involves both frontend and backend development and usually requires advanced features like WebSocket communication for real-time updates. Below is a simplified example of the frontend HTML structure. Please note that this example only covers the frontend and doesn't include the actual real-time collaboration functionality, version control, or support for different programming languages.
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Code Editor</title>
+    <!-- Include your CSS files for styling -->
+    <link rel="stylesheet" href="task3.css">
+</head>
+<body>
+
+<h1>Collaborative Code Editor</h1>
+
+<!-- Display the code editor -->
+<div id="codeEditor"></div>
+
+<!-- Include the CodeMirror library for the code editor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.css">
+
+<!-- Include the CodeMirror mode for a specific programming language (e.g., JavaScript) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/javascript/javascript.min.js"></script>
+
+<!-- Include the Socket.IO library for real-time communication -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+
